@@ -1,7 +1,13 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+//Include libraries
 #include <QMainWindow>
+#include <opencv2/opencv.hpp>
+#include <QFileDialog>
+#include <QDebug>
+#include <QtSerialPort/QSerialPort>
+#include <QTimer>
 
 namespace Ui {
 class MainWindow;

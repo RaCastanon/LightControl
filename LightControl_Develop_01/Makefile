@@ -191,6 +191,7 @@ Makefile: LightControl_Develop_01.pro C:/Qt/Qt5.5.0/5.5/mingw492_32/mkspecs/win3
 		C:/Qt/Qt5.5.0/5.5/mingw492_32/lib/qtmaind.prl \
 		C:/Qt/Qt5.5.0/5.5/mingw492_32/lib/Qt5Widgets.prl \
 		C:/Qt/Qt5.5.0/5.5/mingw492_32/lib/Qt5Gui.prl \
+		C:/Qt/Qt5.5.0/5.5/mingw492_32/lib/Qt5SerialPort.prl \
 		C:/Qt/Qt5.5.0/5.5/mingw492_32/lib/Qt5Core.prl
 	$(QMAKE) -spec win32-g++ CONFIG+=debug -o Makefile LightControl_Develop_01.pro
 C:/Qt/Qt5.5.0/5.5/mingw492_32/mkspecs/features/spec_pre.prf:
@@ -325,6 +326,7 @@ LightControl_Develop_01.pro:
 C:/Qt/Qt5.5.0/5.5/mingw492_32/lib/qtmaind.prl:
 C:/Qt/Qt5.5.0/5.5/mingw492_32/lib/Qt5Widgets.prl:
 C:/Qt/Qt5.5.0/5.5/mingw492_32/lib/Qt5Gui.prl:
+C:/Qt/Qt5.5.0/5.5/mingw492_32/lib/Qt5SerialPort.prl:
 C:/Qt/Qt5.5.0/5.5/mingw492_32/lib/Qt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -spec win32-g++ CONFIG+=debug -o Makefile LightControl_Develop_01.pro

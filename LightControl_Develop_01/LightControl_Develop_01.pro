@@ -4,7 +4,9 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT += core gui
+QT += serialport
+QT += core
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -18,3 +20,12 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h
 
 FORMS    += mainwindow.ui
+
+INCLUDEPATH += "C:\OpenCV\include"
+
+LIBS += -L"C:\OpenCV\lib"\
+        -llibopencv_core300\
+        -llibopencv_imgproc300\
+        -llibopencv_imgcodecs300\
+        -llibopencv_highgui300\
+        -llibopencv_videoio300
