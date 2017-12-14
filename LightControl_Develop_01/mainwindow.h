@@ -31,6 +31,8 @@ public:
 private slots:
     void on_OpenImageButton_clicked();
 
+    void on_closeApp_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

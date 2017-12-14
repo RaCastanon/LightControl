@@ -49,3 +49,18 @@ void MainWindow::on_OpenImageButton_clicked()
         ui->OpenImageButton->setEnabled(false);
     }
 }
+
+/* Function name: closeApp()
+ * Developer:     Raul Castañon
+ * Details:       Close application
+ */
+void MainWindow::on_closeApp_clicked()
+{
+    //Check if we need to stop timer
+    if(true == timerOne->isActive())
+    {
+        timerOne->stop();
+    }
+    //Check if we need to close SerialPort
+    close();
+}
