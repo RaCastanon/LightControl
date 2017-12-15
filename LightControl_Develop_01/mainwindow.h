@@ -8,6 +8,7 @@
 #include <QDebug>
 #include <QtSerialPort/QSerialPort>
 #include <QTimer>
+#include "methods.h"
 
 //Definitions
 #define SERIAL_COMM_ERROR "Error: could not open serial port"
@@ -34,6 +35,8 @@ private slots:
     void on_closeApp_clicked();
 
     void on_grayScale_clicked();
+
+    void on_middlePoints_clicked();
 
 private:
     Ui::MainWindow *ui;

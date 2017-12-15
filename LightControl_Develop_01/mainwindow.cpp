@@ -81,3 +81,30 @@ void MainWindow::on_grayScale_clicked()
         ui->grayScale->setEnabled(false);
     }
 }
+
+/* Function name: on_middlePoints_clicked()
+ * Developer:     Raul Castañon
+ * Details:       Get the middle points to process the calculation of intensity
+ */
+void MainWindow::on_middlePoints_clicked()
+{
+    //Get middle points of the img
+    setMiddlePoints(inputImage.cols, inputImage.rows);
+    //Put values on the GUI labels
+    ui->P_one_cols->setText(QString::number(middlePoints[0][0]));
+    ui->P_one_rows->setText(QString::number(middlePoints[0][1]));
+    ui->P_two_cols->setText(QString::number(middlePoints[1][0]));
+    ui->P_two_rows->setText(QString::number(middlePoints[1][1]));
+    ui->P_three_cols->setText(QString::number(middlePoints[2][0]));
+    ui->P_three_rows->setText(QString::number(middlePoints[2][1]));
+    ui->P_four_cols->setText(QString::number(middlePoints[3][0]));
+    ui->P_four_rows->setText(QString::number(middlePoints[3][1]));
+    ui->P_five_cols->setText(QString::number(middlePoints[4][0]));
+    ui->P_five_rows->setText(QString::number(middlePoints[4][1]));
+    //Enable visualization of getIntensity button
+    ui->getIntensity->setEnabled(true);
+    //Disable current button
+    ui->middlePoints->setEnabled(false);
+
+
+}
