@@ -16,6 +16,7 @@
 #define SERIAL_CLOSED "Serial port closed"
 #define NAMED_WINDOW "Selected Image"
 #define DEFAULT_TEST_POINT "180"
+#define DEFAULT_SIZE_INTENSITY 50
 
 namespace Ui {
 class MainWindow;
@@ -37,6 +38,8 @@ private slots:
     void on_grayScale_clicked();
 
     void on_middlePoints_clicked();
+
+    void on_getIntensity_clicked();
 
 private:
     Ui::MainWindow *ui;

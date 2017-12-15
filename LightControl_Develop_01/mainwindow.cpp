@@ -8,6 +8,8 @@ QSerialPort serial;
 QTimer *timerOne;
 Mat inputImage;
 
+unsigned int intensityLevel = 0;
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -105,6 +107,46 @@ void MainWindow::on_middlePoints_clicked()
     ui->getIntensity->setEnabled(true);
     //Disable current button
     ui->middlePoints->setEnabled(false);
+}
 
 
+
+/* Function name: on_getIntensity_clicked()
+ * Developer:     Raul Castañon
+ * Details:       Get intensity levels from the image
+ */
+void MainWindow::on_getIntensity_clicked()
+{
+    //Local variables
+    Scalar promAreaOne, promAreaTwo, promAreaThree, promAreaFour, promAreaFive;
+    Mat areaOne, areaTwo, areaThree, areaFour, areaFive;
+
+    //Verify size of the area
+    if((ui->widthArea->text().isEmpty())||(ui->hightArea->text().isEmpty()))
+    {
+        qDebug("Default size asigned");
+        ui->widthArea->setText(QString::number(DEFAULT_SIZE_INTENSITY));
+        ui->hightArea->setText(QString::number(DEFAULT_SIZE_INTENSITY));
+    }
+    //Get areas
+    areaOne = inputImage(Rect(middlePoints[0][0], middlePoints[0][1], ui->widthArea->text().toInt(), ui->hightArea->text().toInt()));
+    areaTwo = inputImage(Rect(middlePoints[1][0], middlePoints[1][1], ui->hightArea->text().toInt(), ui->hightArea->text().toInt()));
+    areaThree = inputImage(Rect(middlePoints[2][0], middlePoints[2][1], ui->widthArea->text().toInt(), ui->hightArea->text().toInt()));
+    areaFour = inputImage(Rect(middlePoints[3][0], middlePoints[3][1], ui->widthArea->text().toInt(), ui->hightArea->text().toInt()));
+    areaFive = inputImage(Rect(middlePoints[4][0], middlePoints[4][1], ui->widthArea->text().toInt(), ui->hightArea->text().toInt()));
+    //Get intensity level per area
+    promAreaOne = mean(areaOne);
+    promAreaTwo = mean(areaTwo);
+    promAreaThree = mean(areaThree);
+    promAreaFour = mean(areaFour);
+    promAreaFive = mean(areaFive);
+    //Show results
+    ui->intensityLevel_1->setText(QString::number(promAreaOne[0]));
+    ui->intensityLevel_2->setText(QString::number(promAreaTwo[0]));
+    ui->intensityLevel_3->setText(QString::number(promAreaThree[0]));
+    ui->intensityLevel_4->setText(QString::number(promAreaFour[0]));
+    ui->intensityLevel_5->setText(QString::number(promAreaFive[0]));
+    //Get intensity level mean
+    intensityLevel = (int)((promAreaOne[0] + promAreaTwo[0] + promAreaThree[0] + promAreaFour[0] + promAreaFive[0]) / 5.0);
+    ui->intensityLevel->setText(QString::number(intensityLevel));
 }
