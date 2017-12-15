@@ -64,3 +64,20 @@ void MainWindow::on_closeApp_clicked()
     //Check if we need to close SerialPort
     close();
 }
+
+/* Function name: on_grayScale_clicked()
+ * Developer:     Raul Castañon
+ * Details:       Convert image in grayscale format
+ */
+void MainWindow::on_grayScale_clicked()
+{
+    if(false == inputImage.empty())
+    {
+        //Set image in grayscale format
+        cvtColor(inputImage, inputImage, CV_RGB2GRAY);
+        //Show result in same window
+        imshow(NAMED_WINDOW, inputImage);
+        ui->middlePoints->setEnabled(true);
+        ui->grayScale->setEnabled(false);
+    }
+}

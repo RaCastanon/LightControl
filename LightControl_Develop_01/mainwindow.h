@@ -33,6 +33,8 @@ private slots:
 
     void on_closeApp_clicked();
 
+    void on_grayScale_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
