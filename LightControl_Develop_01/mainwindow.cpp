@@ -265,15 +265,6 @@ void MainWindow::on_stopTimer_clicked()
     }
 }
 
-/* Function name: onTimeOut()
- * Developer:     Raul Castañon
- * Details:       Linker to the timeOut signal from timerOne
- */
-void MainWindow::onTimeOut()
-{
-    qDebug("tick");
-}
-
 /* Function name: on_openVideoCam_clicked()
  * Developer:     Raul Castañon
  * Details:       Open video camera and show continuosly
@@ -300,5 +291,22 @@ void MainWindow::on_openVideoCam_clicked()
                 break;
             }
         }while(true);
+    }
+}
+
+/* Function name: onTimeOut()
+ * Developer:     Raul Castañon
+ * Details:       Linker to the timeOut signal from timerOne
+ */
+void MainWindow::onTimeOut()
+{
+    VideoCapture videoCam;
+    videoCam.open(0);
+    if(videoCam.isOpened())
+    {
+        videoCam >> inputImage;
+        ui->grayScale->clicked();
+        ui->middlePoints->clicked();
+        ui->getIntensity->clicked();
     }
 }
