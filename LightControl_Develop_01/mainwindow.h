@@ -17,6 +17,7 @@
 #define NAMED_WINDOW "Selected Image"
 #define DEFAULT_TEST_POINT "180"
 #define DEFAULT_SIZE_INTENSITY 50
+#define DEFAULT_TIMER_ON 2000
 
 namespace Ui {
 class MainWindow;
@@ -44,6 +45,12 @@ private slots:
     void on_openSerialPort_clicked();
 
     void on_closeSerialPort_clicked();
+
+    void on_setTimer_clicked();
+
+    void on_stopTimer_clicked();
+
+    void onTimeOut();
 
 private:
     Ui::MainWindow *ui;

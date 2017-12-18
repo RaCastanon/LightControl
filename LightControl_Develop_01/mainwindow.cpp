@@ -28,6 +28,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->closeSerialPort->setEnabled(false);
     ui->openSerialPort->setEnabled(true);
+    ui->setTimer->setEnabled(true);
+    ui->stopTimer->setEnabled(false);
 }
 
 MainWindow::~MainWindow()
@@ -213,4 +215,53 @@ void MainWindow::on_closeSerialPort_clicked()
         // Do nothing
         qDebug("Port already open");
     }
+}
+
+/* Function name: setTimer()
+ * Developer:     Raul Castañon
+ * Details:       Start timer one
+ */
+void MainWindow::on_setTimer_clicked()
+{
+    //Verify if timer one is not active
+    if(!(timerOne->isActive()))
+    {
+        qDebug("Timer one is enabled");
+        timerOne->start(DEFAULT_TIMER_ON);
+        ui->setTimer->setEnabled(false);
+        ui->stopTimer->setEnabled(true);
+    }
+    else
+    {
+        qDebug("Timer one is enabled");
+    }
+}
+
+/* Function name: stopTimer()
+ * Developer:     Raul Castañon
+ * Details:       Stop timer one
+ */
+void MainWindow::on_stopTimer_clicked()
+{
+    //Verify timer one is active
+    if(timerOne->isActive())
+    {
+        qDebug("Timer one is disabled");
+        timerOne->stop();
+        ui->setTimer->setEnabled(true);
+        ui->stopTimer->setEnabled(false);
+    }
+    else
+    {
+        qDebug("Timer one is not active");
+    }
+}
+
+/* Function name: onTimeOut()
+ * Developer:     Raul Castañon
+ * Details:       Linker to the timeOut signal from timerOne
+ */
+void MainWindow::onTimeOut()
+{
+    qDebug("tick");
 }
