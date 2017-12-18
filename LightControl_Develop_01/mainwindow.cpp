@@ -7,6 +7,7 @@ using namespace cv;
 QSerialPort serial;
 QTimer *timerOne;
 Mat inputImage;
+Mat inputVideo;
 
 unsigned int intensityLevel = 0;
 bool serialFlag = false;
@@ -70,6 +71,10 @@ void MainWindow::on_closeApp_clicked()
         timerOne->stop();
     }
     //Check if we need to close SerialPort
+    if(true == serialFlag)
+    {
+        MainWindow::on_closeSerialPort_clicked();
+    }
     close();
 }
 
@@ -155,6 +160,9 @@ void MainWindow::on_getIntensity_clicked()
     //Get intensity level mean
     intensityLevel = (unsigned int)((promAreaOne[0] + promAreaTwo[0] + promAreaThree[0] + promAreaFour[0] + promAreaFive[0]) / 5.0);
     ui->intensityLevel->setText(QString::number(intensityLevel));
+    // Enable open Image button and disable getIntensity
+    ui->OpenImageButton->setEnabled(true);
+    ui->getIntensity->setEnabled(false);
 }
 
 /* Function name: openSerialPort()
@@ -166,7 +174,7 @@ void MainWindow::on_openSerialPort_clicked()
     if(false == serialFlag)
     {
         //Set configuration conditions
-        serial.setPortName("COM10");
+        serial.setPortName(DEFAULT_COM_PORT);
         serial.setBaudRate(QSerialPort::Baud9600);
         serial.setDataBits(QSerialPort::Data8);
         serial.setParity(QSerialPort::NoParity);
@@ -176,7 +184,7 @@ void MainWindow::on_openSerialPort_clicked()
         if(serial.open(QIODevice::ReadWrite))
         {
             qDebug(CONNECTION_SUCESSFUL);
-            serial.write("95\n");
+            serial.write(DEFAULT_PWM_VALUE);
             serialFlag = true;
             ui->openSerialPort->setEnabled(false);
             ui->closeSerialPort->setEnabled(true);
@@ -191,7 +199,7 @@ void MainWindow::on_openSerialPort_clicked()
     }
     else
     {
-        qDebug("Port already open");
+        qDebug(ERROR_PORT_OPEN);
     }
 }
 
@@ -213,7 +221,7 @@ void MainWindow::on_closeSerialPort_clicked()
     else
     {
         // Do nothing
-        qDebug("Port already open");
+        qDebug(ERROR_PORT_OPEN);
     }
 }
 
@@ -226,14 +234,14 @@ void MainWindow::on_setTimer_clicked()
     //Verify if timer one is not active
     if(!(timerOne->isActive()))
     {
-        qDebug("Timer one is enabled");
+        qDebug(TIMER_ENABLED);
         timerOne->start(DEFAULT_TIMER_ON);
         ui->setTimer->setEnabled(false);
         ui->stopTimer->setEnabled(true);
     }
     else
     {
-        qDebug("Timer one is enabled");
+        qDebug(ERROR_TIMER_OPEN);
     }
 }
 
@@ -246,14 +254,14 @@ void MainWindow::on_stopTimer_clicked()
     //Verify timer one is active
     if(timerOne->isActive())
     {
-        qDebug("Timer one is disabled");
+        qDebug(TIMER_DISABLED);
         timerOne->stop();
         ui->setTimer->setEnabled(true);
         ui->stopTimer->setEnabled(false);
     }
     else
     {
-        qDebug("Timer one is not active");
+        qDebug(ERROR_TIMER_TOCLOSE);
     }
 }
 
@@ -264,4 +272,33 @@ void MainWindow::on_stopTimer_clicked()
 void MainWindow::onTimeOut()
 {
     qDebug("tick");
+}
+
+/* Function name: on_openVideoCam_clicked()
+ * Developer:     Raul Castañon
+ * Details:       Open video camera and show continuosly
+ */
+void MainWindow::on_openVideoCam_clicked()
+{
+    VideoCapture videoCam;
+    videoCam.open(DEFAULT_VIDEO_CAM_PORT);
+    if(videoCam.isOpened())
+    {
+        qDebug(VIDEO_ENABLED);
+        do
+        {
+            videoCam >> inputVideo;
+            imshow(DEFAULT_VIDEO_NAME, inputVideo);
+            waitKey(DEFAULT_WAITKEY_TIME);
+            ui->openVideoCam->setEnabled(false);
+            if(waitKey(30) > 0)
+            {
+                videoCam.release();
+                destroyWindow(DEFAULT_VIDEO_NAME);
+                qDebug(VIDEO_DISABLED);
+                ui->openVideoCam->setEnabled(true);
+                break;
+            }
+        }while(true);
+    }
 }
