@@ -9,6 +9,7 @@ QTimer *timerOne;
 Mat inputImage;
 
 unsigned int intensityLevel = 0;
+bool serialFlag = false;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -24,6 +25,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->grayScale->setDisabled(true);
     ui->middlePoints->setDisabled(true);
     ui->getIntensity->setDisabled(true);
+
+    ui->closeSerialPort->setEnabled(false);
+    ui->openSerialPort->setEnabled(true);
 }
 
 MainWindow::~MainWindow()
@@ -147,6 +151,66 @@ void MainWindow::on_getIntensity_clicked()
     ui->intensityLevel_4->setText(QString::number(promAreaFour[0]));
     ui->intensityLevel_5->setText(QString::number(promAreaFive[0]));
     //Get intensity level mean
-    intensityLevel = (int)((promAreaOne[0] + promAreaTwo[0] + promAreaThree[0] + promAreaFour[0] + promAreaFive[0]) / 5.0);
+    intensityLevel = (unsigned int)((promAreaOne[0] + promAreaTwo[0] + promAreaThree[0] + promAreaFour[0] + promAreaFive[0]) / 5.0);
     ui->intensityLevel->setText(QString::number(intensityLevel));
+}
+
+/* Function name: openSerialPort()
+ * Developer:     Raul Castañon
+ * Details:       Configure and open the serialPort
+ */
+void MainWindow::on_openSerialPort_clicked()
+{
+    if(false == serialFlag)
+    {
+        //Set configuration conditions
+        serial.setPortName("COM10");
+        serial.setBaudRate(QSerialPort::Baud9600);
+        serial.setDataBits(QSerialPort::Data8);
+        serial.setParity(QSerialPort::NoParity);
+        serial.setStopBits(QSerialPort::OneStop);
+        serial.setFlowControl(QSerialPort::NoFlowControl);
+        //Check if the port has been open
+        if(serial.open(QIODevice::ReadWrite))
+        {
+            qDebug(CONNECTION_SUCESSFUL);
+            serial.write("95\n");
+            serialFlag = true;
+            ui->openSerialPort->setEnabled(false);
+            ui->closeSerialPort->setEnabled(true);
+        }
+        //if not send error message
+        else
+        {
+            qDebug(SERIAL_COMM_ERROR);
+            ui->closeSerialPort->setEnabled(false);
+            ui->openSerialPort->setEnabled(true);
+        }
+    }
+    else
+    {
+        qDebug("Port already open");
+    }
+}
+
+/* Function name: closeSerialPort()
+ * Developer:     Raul Castañon
+ * Details:       Close serial port
+ */
+void MainWindow::on_closeSerialPort_clicked()
+{
+    // Verify serial port condition
+    if(serial.isOpen())
+    {
+        serial.close();
+        serialFlag = false;
+        qDebug(SERIAL_CLOSED);
+        ui->closeSerialPort->setEnabled(false);
+        ui->openSerialPort->setEnabled(true);
+    }
+    else
+    {
+        // Do nothing
+        qDebug("Port already open");
+    }
 }

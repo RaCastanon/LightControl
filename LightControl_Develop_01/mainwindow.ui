@@ -68,8 +68,8 @@
     <widget class="QPushButton" name="OpenImageButton">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>30</y>
+       <x>20</x>
+       <y>40</y>
        <width>161</width>
        <height>41</height>
       </rect>
@@ -81,8 +81,8 @@
     <widget class="QPushButton" name="grayScale">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>80</y>
+       <x>20</x>
+       <y>90</y>
        <width>161</width>
        <height>41</height>
       </rect>
@@ -94,8 +94,8 @@
     <widget class="QPushButton" name="middlePoints">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>130</y>
+       <x>20</x>
+       <y>140</y>
        <width>161</width>
        <height>41</height>
       </rect>
@@ -107,8 +107,8 @@
     <widget class="QPushButton" name="getIntensity">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>180</y>
+       <x>20</x>
+       <y>190</y>
        <width>161</width>
        <height>41</height>
       </rect>

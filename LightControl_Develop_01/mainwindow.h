@@ -41,6 +41,10 @@ private slots:
 
     void on_getIntensity_clicked();
 
+    void on_openSerialPort_clicked();
+
+    void on_closeSerialPort_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
