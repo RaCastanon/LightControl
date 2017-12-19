@@ -3,7 +3,7 @@
 
 using namespace cv;
 
-//Global variables
+// Global variables
 QSerialPort serial;
 QTimer *timerOne;
 Mat inputImage;
@@ -18,11 +18,11 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    //Configure timer one
+    // Configure timer one
     timerOne = new QTimer(this);
     connect(timerOne, SIGNAL(timeout()), this, SLOT(onTimeOut()));
 
-    //Disable not required buttons
+    // Disable not required buttons
     ui->grayScale->setDisabled(true);
     ui->middlePoints->setDisabled(true);
     ui->getIntensity->setDisabled(true);
@@ -46,15 +46,15 @@ void MainWindow::on_OpenImageButton_clicked()
 {
     QString inputImg = QFileDialog::getOpenFileName();
     inputImage = imread(inputImg.toLatin1().data());
-    //Verify if there is an image
+    // Verify if there is an image
     if(!(inputImage.empty()))
     {
-        //Show image
+        // Show image
         namedWindow(NAMED_WINDOW, WINDOW_NORMAL);
         imshow(NAMED_WINDOW, inputImage);
-        //Enable grayscale button
+        // Enable grayscale button
         ui->grayScale->setEnabled(true);
-        //Disable OpenImage button
+        // Disable OpenImage button
         ui->OpenImageButton->setEnabled(false);
     }
 }
@@ -65,12 +65,12 @@ void MainWindow::on_OpenImageButton_clicked()
  */
 void MainWindow::on_closeApp_clicked()
 {
-    //Check if we need to stop timer
+    // Check if we need to stop timer
     if(true == timerOne->isActive())
     {
         timerOne->stop();
     }
-    //Check if we need to close SerialPort
+    // Check if we need to close SerialPort
     if(true == serialFlag)
     {
         MainWindow::on_closeSerialPort_clicked();
@@ -86,9 +86,9 @@ void MainWindow::on_grayScale_clicked()
 {
     if(false == inputImage.empty())
     {
-        //Set image in grayscale format
+        // Set image in grayscale format
         cvtColor(inputImage, inputImage, CV_RGB2GRAY);
-        //Show result in same window
+        // Show result in same window
         imshow(NAMED_WINDOW, inputImage);
         ui->middlePoints->setEnabled(true);
         ui->grayScale->setEnabled(false);
@@ -101,9 +101,9 @@ void MainWindow::on_grayScale_clicked()
  */
 void MainWindow::on_middlePoints_clicked()
 {
-    //Get middle points of the img
+    // Get middle points of the img
     setMiddlePoints(inputImage.cols, inputImage.rows);
-    //Put values on the GUI labels
+    // Put values on the GUI labels
     ui->P_one_cols->setText(QString::number(middlePoints[0][0]));
     ui->P_one_rows->setText(QString::number(middlePoints[0][1]));
     ui->P_two_cols->setText(QString::number(middlePoints[1][0]));
@@ -114,9 +114,9 @@ void MainWindow::on_middlePoints_clicked()
     ui->P_four_rows->setText(QString::number(middlePoints[3][1]));
     ui->P_five_cols->setText(QString::number(middlePoints[4][0]));
     ui->P_five_rows->setText(QString::number(middlePoints[4][1]));
-    //Enable visualization of getIntensity button
+    // Enable visualization of getIntensity button
     ui->getIntensity->setEnabled(true);
-    //Disable current button
+    // Disable current button
     ui->middlePoints->setEnabled(false);
 }
 
@@ -128,36 +128,36 @@ void MainWindow::on_middlePoints_clicked()
  */
 void MainWindow::on_getIntensity_clicked()
 {
-    //Local variables
+    // Local variables
     Scalar promAreaOne, promAreaTwo, promAreaThree, promAreaFour, promAreaFive;
     Mat areaOne, areaTwo, areaThree, areaFour, areaFive;
 
-    //Verify size of the area
+    // Verify size of the area
     if((ui->widthArea->text().isEmpty())||(ui->hightArea->text().isEmpty()))
     {
         qDebug("Default size asigned");
         ui->widthArea->setText(QString::number(DEFAULT_SIZE_INTENSITY));
         ui->hightArea->setText(QString::number(DEFAULT_SIZE_INTENSITY));
     }
-    //Get areas
+    // Get areas
     areaOne = inputImage(Rect(middlePoints[0][0], middlePoints[0][1], ui->widthArea->text().toInt(), ui->hightArea->text().toInt()));
     areaTwo = inputImage(Rect(middlePoints[1][0], middlePoints[1][1], ui->hightArea->text().toInt(), ui->hightArea->text().toInt()));
     areaThree = inputImage(Rect(middlePoints[2][0], middlePoints[2][1], ui->widthArea->text().toInt(), ui->hightArea->text().toInt()));
     areaFour = inputImage(Rect(middlePoints[3][0], middlePoints[3][1], ui->widthArea->text().toInt(), ui->hightArea->text().toInt()));
     areaFive = inputImage(Rect(middlePoints[4][0], middlePoints[4][1], ui->widthArea->text().toInt(), ui->hightArea->text().toInt()));
-    //Get intensity level per area
+    // Get intensity level per area
     promAreaOne = mean(areaOne);
     promAreaTwo = mean(areaTwo);
     promAreaThree = mean(areaThree);
     promAreaFour = mean(areaFour);
     promAreaFive = mean(areaFive);
-    //Show results
+    // Show results
     ui->intensityLevel_1->setText(QString::number(promAreaOne[0]));
     ui->intensityLevel_2->setText(QString::number(promAreaTwo[0]));
     ui->intensityLevel_3->setText(QString::number(promAreaThree[0]));
     ui->intensityLevel_4->setText(QString::number(promAreaFour[0]));
     ui->intensityLevel_5->setText(QString::number(promAreaFive[0]));
-    //Get intensity level mean
+    // Get intensity level mean
     intensityLevel = (unsigned int)((promAreaOne[0] + promAreaTwo[0] + promAreaThree[0] + promAreaFour[0] + promAreaFive[0]) / 5.0);
     ui->intensityLevel->setText(QString::number(intensityLevel));
     // Enable open Image button and disable getIntensity
@@ -173,14 +173,14 @@ void MainWindow::on_openSerialPort_clicked()
 {
     if(false == serialFlag)
     {
-        //Set configuration conditions
+        // Set configuration conditions
         serial.setPortName(DEFAULT_COM_PORT);
         serial.setBaudRate(QSerialPort::Baud9600);
         serial.setDataBits(QSerialPort::Data8);
         serial.setParity(QSerialPort::NoParity);
         serial.setStopBits(QSerialPort::OneStop);
         serial.setFlowControl(QSerialPort::NoFlowControl);
-        //Check if the port has been open
+        // Check if the port has been open
         if(serial.open(QIODevice::ReadWrite))
         {
             qDebug(CONNECTION_SUCESSFUL);
@@ -231,13 +231,14 @@ void MainWindow::on_closeSerialPort_clicked()
  */
 void MainWindow::on_setTimer_clicked()
 {
-    //Verify if timer one is not active
+    // Verify if timer one is not active
     if(!(timerOne->isActive()))
     {
         qDebug(TIMER_ENABLED);
         timerOne->start(DEFAULT_TIMER_ON);
         ui->setTimer->setEnabled(false);
         ui->stopTimer->setEnabled(true);
+        ui->openSerialPort->click();
     }
     else
     {
@@ -251,13 +252,15 @@ void MainWindow::on_setTimer_clicked()
  */
 void MainWindow::on_stopTimer_clicked()
 {
-    //Verify timer one is active
+    // Verify timer one is active
     if(timerOne->isActive())
     {
         qDebug(TIMER_DISABLED);
         timerOne->stop();
         ui->setTimer->setEnabled(true);
         ui->stopTimer->setEnabled(false);
+        ui->closeSerialPort->click();
+        destroyWindow(NAMED_WINDOW);
     }
     else
     {
@@ -300,13 +303,35 @@ void MainWindow::on_openVideoCam_clicked()
  */
 void MainWindow::onTimeOut()
 {
+    // Local variables
     VideoCapture videoCam;
+    unsigned int setPoint = 0;
+    unsigned int ut = 0;
+
+    // Open videoCamera
     videoCam.open(0);
     if(videoCam.isOpened())
     {
+        // Get image
         videoCam >> inputImage;
+        // Process Image
         ui->grayScale->clicked();
         ui->middlePoints->clicked();
         ui->getIntensity->clicked();
+        // Verify setPoint
+        if((ui->setPoint->text().toInt() > 0) && (ui->setPoint->text().toInt() <= 255))
+        {
+            // Get set point
+            setPoint = (unsigned int) ui->setPoint->text().toInt();
+        }
+        else
+        {
+            qDebug(ERROR_SET_POINT);
+            setPoint = DEFAULT_SETPOINT;
+            ui->setPoint->setText(DEFAULT_SET_POINT);
+        }
+        // Send params to the controller
+        ut = FuzzyCtl(intensityLevel, setPoint);
+
     }
 }

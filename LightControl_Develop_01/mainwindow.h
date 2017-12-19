@@ -10,7 +10,7 @@
 #include <QTimer>
 #include "methods.h"
 
-//Definitions
+// Definitions
 #define DEFAULT_TEST_POINT "180"
 #define DEFAULT_COM_PORT "COM10"
 #define DEFAULT_PWM_VALUE "95\n"
@@ -19,6 +19,8 @@
 #define DEFAULT_VIDEO_NAME "Video window"
 #define DEFAULT_WAITKEY_TIME 100
 #define DEFAULT_VIDEO_CAM_PORT 0
+#define DEFAULT_SETPOINT 120
+#define DEFAULT_SET_POINT "120"
 #define TIMER_ENABLED "Timer one is enabled"
 #define TIMER_DISABLED "Timer one is disabled"
 #define VIDEO_ENABLED "Video camera open"
@@ -31,6 +33,7 @@
 #define ERROR_PORT_OPEN "Error 1: Port already open"
 #define ERROR_TIMER_OPEN "Error 2: Timer one is enabled"
 #define ERROR_TIMER_TOCLOSE "Error 3: Timer one is not active"
+#define ERROR_SET_POINT "Error 4: Default setPoint assigned"
 
 namespace Ui {
 class MainWindow;
