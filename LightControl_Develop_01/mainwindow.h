@@ -8,13 +8,14 @@
 #include <QDebug>
 #include <QtSerialPort/QSerialPort>
 #include <QTimer>
+#include <qstring.h>
 #include "methods.h"
 
 // Definitions
 #define DEFAULT_TEST_POINT "180"
 #define DEFAULT_COM_PORT "COM10"
-#define DEFAULT_PWM_VALUE "95\n"
-#define DEFAULT_SIZE_INTENSITY 50
+#define DEFAULT_PWM_VALUE "50\n"
+#define DEFAULT_SIZE_INTENSITY 150
 #define DEFAULT_TIMER_ON 2000
 #define DEFAULT_VIDEO_NAME "Video window"
 #define DEFAULT_WAITKEY_TIME 100

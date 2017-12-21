@@ -307,6 +307,7 @@ void MainWindow::onTimeOut()
     VideoCapture videoCam;
     unsigned int setPoint = 0;
     unsigned int ut = 0;
+    char u_t[3];
 
     // Open videoCamera
     videoCam.open(0);
@@ -333,5 +334,17 @@ void MainWindow::onTimeOut()
         // Send params to the controller
         ut = FuzzyCtl(intensityLevel, setPoint);
 
+        /* ut is the control signal, it has been calculated in the limits of a byte
+         * need to normalize to the mcu needs
+         * maximum value that mcu will receive will be 100 (this will be the 100% of the PWM cycle
+         * minimum value will be 5.
+         * 255 -> 100
+         * ut  -> x
+         */
+        ut = 100 - (unsigned int)((ut * 100) / 255);
+        itoa(ut, u_t, 10);
+        u_t[2] = '\n';
+        serial.write(u_t);
+        qDebug(u_t);
     }
 }
