@@ -1,7 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-//Include libraries
+//Included libraries
 #include <QMainWindow>
 #include <opencv2/opencv.hpp>
 #include <QFileDialog>
@@ -15,7 +15,7 @@
 #define DEFAULT_TEST_POINT "180"
 #define DEFAULT_COM_PORT "COM10"
 #define DEFAULT_PWM_VALUE "50\n"
-#define DEFAULT_SIZE_INTENSITY 150
+#define DEFAULT_SIZE_INTENSITY 50
 #define DEFAULT_TIMER_ON 2000
 #define DEFAULT_VIDEO_NAME "Video window"
 #define DEFAULT_WAITKEY_TIME 100
@@ -35,6 +35,7 @@
 #define ERROR_TIMER_OPEN "Error 2: Timer one is enabled"
 #define ERROR_TIMER_TOCLOSE "Error 3: Timer one is not active"
 #define ERROR_SET_POINT "Error 4: Default setPoint assigned"
+#define ERROR_SERIAL_CLOSE "Error 5: SerialPort is not open"
 
 namespace Ui {
 class MainWindow;

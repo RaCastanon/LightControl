@@ -344,7 +344,16 @@ void MainWindow::onTimeOut()
         ut = 100 - (unsigned int)((ut * 100) / 255);
         itoa(ut, u_t, 10);
         u_t[2] = '\n';
-        serial.write(u_t);
-        qDebug(u_t);
+        // Verify if serial port is open before writting
+        if(serial.isOpen())
+        {
+            serial.write(u_t);
+            qDebug(u_t);
+        }
+        else
+        {
+            qDebug(ERROR_SERIAL_CLOSE);
+            ui->stopTimer->clicked();
+        }
     }
 }

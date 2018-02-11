@@ -17,26 +17,26 @@
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>60</x>
       <y>340</y>
-      <width>131</width>
+      <width>211</width>
       <height>141</height>
      </rect>
     </property>
     <property name="title">
-     <string>Timer Options</string>
+     <string>Opciones del Temporalizador</string>
     </property>
     <widget class="QPushButton" name="stopTimer">
      <property name="geometry">
       <rect>
        <x>20</x>
        <y>82</y>
-       <width>91</width>
+       <width>161</width>
        <height>41</height>
       </rect>
      </property>
      <property name="text">
-      <string>Stop Timer</string>
+      <string>Detener Temporalizador</string>
      </property>
     </widget>
     <widget class="QPushButton" name="setTimer">
@@ -44,26 +44,26 @@
       <rect>
        <x>20</x>
        <y>30</y>
-       <width>91</width>
+       <width>161</width>
        <height>41</height>
       </rect>
      </property>
      <property name="text">
-      <string>Set Timer</string>
+      <string>Habilitar Temporalizador</string>
      </property>
     </widget>
    </widget>
    <widget class="QGroupBox" name="groupBox_4">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>60</x>
       <y>50</y>
       <width>211</width>
       <height>261</height>
      </rect>
     </property>
     <property name="title">
-     <string>Manual Process</string>
+     <string>Procesamiento Manual</string>
     </property>
     <widget class="QPushButton" name="OpenImageButton">
      <property name="geometry">
@@ -75,7 +75,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>1. Open Image</string>
+      <string>1. Abrir Imagen</string>
      </property>
     </widget>
     <widget class="QPushButton" name="grayScale">
@@ -88,7 +88,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>2. Convert to grayscale</string>
+      <string>2. Convertir a Grises</string>
      </property>
     </widget>
     <widget class="QPushButton" name="middlePoints">
@@ -101,7 +101,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>3. Set Middle Points</string>
+      <string>3. Puntos Medios</string>
      </property>
     </widget>
     <widget class="QPushButton" name="getIntensity">
@@ -114,7 +114,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>4. Get Intensity Levels</string>
+      <string>4. Niveles de Intensidad</string>
      </property>
     </widget>
    </widget>
@@ -123,19 +123,19 @@
      <rect>
       <x>720</x>
       <y>200</y>
-      <width>151</width>
+      <width>191</width>
       <height>101</height>
      </rect>
     </property>
     <property name="title">
-     <string>Size area</string>
+     <string>Tamaño del área</string>
     </property>
     <widget class="QLineEdit" name="widthArea">
      <property name="geometry">
       <rect>
        <x>60</x>
        <y>30</y>
-       <width>71</width>
+       <width>111</width>
        <height>22</height>
       </rect>
      </property>
@@ -145,7 +145,7 @@
       <rect>
        <x>60</x>
        <y>60</y>
-       <width>71</width>
+       <width>111</width>
        <height>22</height>
       </rect>
      </property>
@@ -160,7 +160,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Width</string>
+      <string>Ancho</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_13">
@@ -173,21 +173,21 @@
       </rect>
      </property>
      <property name="text">
-      <string>Height</string>
+      <string>Alto</string>
      </property>
     </widget>
    </widget>
    <widget class="QGroupBox" name="groupBox_5">
     <property name="geometry">
      <rect>
-      <x>320</x>
+      <x>300</x>
       <y>50</y>
-      <width>201</width>
+      <width>221</width>
       <height>261</height>
      </rect>
     </property>
     <property name="title">
-     <string>Middle Points</string>
+     <string>Obtensión de Puntos Medios</string>
     </property>
     <widget class="QLabel" name="label_2">
      <property name="geometry">
@@ -199,7 +199,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Point One</string>
+      <string>Punto Uno</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_3">
@@ -212,7 +212,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Point Two</string>
+      <string>Punto Dos</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_4">
@@ -225,7 +225,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Point Three</string>
+      <string>Punto Tres</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_5">
@@ -233,12 +233,12 @@
       <rect>
        <x>10</x>
        <y>140</y>
-       <width>71</width>
+       <width>81</width>
        <height>16</height>
       </rect>
      </property>
      <property name="text">
-      <string>Point Four</string>
+      <string>Punto Cuatro</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_6">
@@ -251,13 +251,13 @@
       </rect>
      </property>
      <property name="text">
-      <string>Point Five</string>
+      <string>Punto Cinco</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="P_one_cols">
      <property name="geometry">
       <rect>
-       <x>80</x>
+       <x>110</x>
        <y>50</y>
        <width>51</width>
        <height>22</height>
@@ -267,7 +267,7 @@
     <widget class="QLineEdit" name="P_two_cols">
      <property name="geometry">
       <rect>
-       <x>80</x>
+       <x>110</x>
        <y>80</y>
        <width>51</width>
        <height>22</height>
@@ -277,7 +277,7 @@
     <widget class="QLineEdit" name="P_three_cols">
      <property name="geometry">
       <rect>
-       <x>80</x>
+       <x>110</x>
        <y>110</y>
        <width>51</width>
        <height>22</height>
@@ -287,7 +287,7 @@
     <widget class="QLineEdit" name="P_four_cols">
      <property name="geometry">
       <rect>
-       <x>80</x>
+       <x>110</x>
        <y>140</y>
        <width>51</width>
        <height>22</height>
@@ -297,7 +297,7 @@
     <widget class="QLineEdit" name="P_five_cols">
      <property name="geometry">
       <rect>
-       <x>80</x>
+       <x>110</x>
        <y>170</y>
        <width>51</width>
        <height>22</height>
@@ -307,7 +307,7 @@
     <widget class="QLineEdit" name="P_four_rows">
      <property name="geometry">
       <rect>
-       <x>140</x>
+       <x>170</x>
        <y>140</y>
        <width>51</width>
        <height>22</height>
@@ -317,7 +317,7 @@
     <widget class="QLineEdit" name="P_two_rows">
      <property name="geometry">
       <rect>
-       <x>140</x>
+       <x>170</x>
        <y>80</y>
        <width>51</width>
        <height>22</height>
@@ -327,7 +327,7 @@
     <widget class="QLineEdit" name="P_five_rows">
      <property name="geometry">
       <rect>
-       <x>140</x>
+       <x>170</x>
        <y>170</y>
        <width>51</width>
        <height>22</height>
@@ -337,7 +337,7 @@
     <widget class="QLineEdit" name="P_one_rows">
      <property name="geometry">
       <rect>
-       <x>140</x>
+       <x>170</x>
        <y>50</y>
        <width>51</width>
        <height>22</height>
@@ -347,7 +347,7 @@
     <widget class="QLineEdit" name="P_three_rows">
      <property name="geometry">
       <rect>
-       <x>140</x>
+       <x>170</x>
        <y>110</y>
        <width>51</width>
        <height>22</height>
@@ -360,33 +360,33 @@
      <rect>
       <x>520</x>
       <y>340</y>
-      <width>141</width>
+      <width>171</width>
       <height>141</height>
      </rect>
     </property>
     <property name="title">
-     <string>Video Cam Optiions</string>
+     <string>Opciones de Video</string>
     </property>
     <widget class="QPushButton" name="openVideoCam">
      <property name="geometry">
       <rect>
        <x>20</x>
        <y>30</y>
-       <width>93</width>
+       <width>131</width>
        <height>41</height>
       </rect>
      </property>
      <property name="text">
-      <string>Open Video</string>
+      <string>Habilitar Video</string>
      </property>
     </widget>
     <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>70</y>
-       <width>121</width>
-       <height>61</height>
+       <x>20</x>
+       <y>80</y>
+       <width>131</width>
+       <height>51</height>
       </rect>
      </property>
      <property name="sizePolicy">
@@ -423,30 +423,30 @@
      <rect>
       <x>720</x>
       <y>50</y>
-      <width>151</width>
+      <width>191</width>
       <height>91</height>
      </rect>
     </property>
     <property name="title">
-     <string>Controller Settings</string>
+     <string>Configuración del Control</string>
     </property>
     <widget class="QLabel" name="label_14">
      <property name="geometry">
       <rect>
        <x>10</x>
        <y>30</y>
-       <width>61</width>
+       <width>91</width>
        <height>16</height>
       </rect>
      </property>
      <property name="text">
-      <string>Set Point</string>
+      <string>Nivel Deseado</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="setPoint">
      <property name="geometry">
       <rect>
-       <x>70</x>
+       <x>110</x>
        <y>30</y>
        <width>71</width>
        <height>22</height>
@@ -458,13 +458,13 @@
     <property name="geometry">
      <rect>
       <x>790</x>
-      <y>440</y>
+      <y>430</y>
       <width>121</width>
       <height>51</height>
      </rect>
     </property>
     <property name="text">
-     <string>Close Application</string>
+     <string>Cerrar Aplicación</string>
     </property>
    </widget>
    <widget class="QGroupBox" name="groupBox_6">
@@ -477,7 +477,7 @@
      </rect>
     </property>
     <property name="title">
-     <string>Intensity Levels</string>
+     <string>Niveles de Intensidad</string>
     </property>
     <widget class="QLabel" name="label_11">
      <property name="geometry">
@@ -489,7 +489,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Area Five</string>
+      <string>Área Cinco</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_7">
@@ -502,7 +502,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Area Two</string>
+      <string>Área Dos</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_10">
@@ -515,7 +515,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Area Three</string>
+      <string>Área Tres</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_9">
@@ -528,7 +528,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Area One</string>
+      <string>Área Uno</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_8">
@@ -541,7 +541,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Area Four</string>
+      <string>Área Cuatro</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="intensityLevel_1">
@@ -610,24 +610,24 @@
      <rect>
       <x>300</x>
       <y>340</y>
-      <width>151</width>
+      <width>191</width>
       <height>141</height>
      </rect>
     </property>
     <property name="title">
-     <string>Serial Comm Options</string>
+     <string>Opciones de Comunicación</string>
     </property>
     <widget class="QPushButton" name="closeSerialPort">
      <property name="geometry">
       <rect>
        <x>20</x>
        <y>80</y>
-       <width>111</width>
+       <width>161</width>
        <height>41</height>
       </rect>
      </property>
      <property name="text">
-      <string>Close SerialPort</string>
+      <string>Detener Comunicación</string>
      </property>
     </widget>
     <widget class="QPushButton" name="openSerialPort">
@@ -635,12 +635,12 @@
       <rect>
        <x>20</x>
        <y>30</y>
-       <width>111</width>
+       <width>161</width>
        <height>41</height>
       </rect>
      </property>
      <property name="text">
-      <string>Open SerialPort</string>
+      <string>Establecer Comunicación</string>
      </property>
     </widget>
    </widget>
