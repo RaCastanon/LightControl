@@ -56,9 +56,9 @@
    <widget class="QGroupBox" name="groupBox_4">
     <property name="geometry">
      <rect>
-      <x>60</x>
+      <x>50</x>
       <y>50</y>
-      <width>211</width>
+      <width>231</width>
       <height>261</height>
      </rect>
     </property>
@@ -70,7 +70,7 @@
       <rect>
        <x>20</x>
        <y>40</y>
-       <width>161</width>
+       <width>191</width>
        <height>41</height>
       </rect>
      </property>
@@ -83,7 +83,7 @@
       <rect>
        <x>20</x>
        <y>90</y>
-       <width>161</width>
+       <width>191</width>
        <height>41</height>
       </rect>
      </property>
@@ -96,12 +96,12 @@
       <rect>
        <x>20</x>
        <y>140</y>
-       <width>161</width>
+       <width>191</width>
        <height>41</height>
       </rect>
      </property>
      <property name="text">
-      <string>3. Puntos Medios</string>
+      <string>3. Obtención de Puntos Medios</string>
      </property>
     </widget>
     <widget class="QPushButton" name="getIntensity">
@@ -109,7 +109,7 @@
       <rect>
        <x>20</x>
        <y>190</y>
-       <width>161</width>
+       <width>191</width>
        <height>41</height>
       </rect>
      </property>
@@ -187,7 +187,7 @@
      </rect>
     </property>
     <property name="title">
-     <string>Obtensión de Puntos Medios</string>
+     <string>Puntos Medios</string>
     </property>
     <widget class="QLabel" name="label_2">
      <property name="geometry">
